@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
+    [Header("Guns")]
     [SerializeField] private GameObject[] guns;
     [SerializeField] private GameObject lookY;
 
+    [Header("First Person Positions")]
     [SerializeField] private GameObject FP_smallGunTransform;
     [SerializeField] private GameObject FP_largeGunTransform;
+
+    [Header("Third Person Positions")]
     [SerializeField] private GameObject TP_smallGunTransform;
     [SerializeField] private GameObject TP_largeGunTransform;
 
     public CameraFollow cameraFollow;
+    public bool thirdperson;
 
     private GameObject currentGun;
-
-    private bool thirdperson;
     private bool isSmallGun = true;
 
-    private Vector3 offset = new Vector3(0f, 0f, 3f);
+    Vector3 position;
 
     private void Start()
     {
@@ -28,12 +31,8 @@ public class GunScript : MonoBehaviour
 
     private void Update()
     {
-        SelectGun();
-        
-    }
-    private void LateUpdate()
-    {
         GunPosition();
+        SelectGun();
     }
 
     private void SelectGun()
@@ -66,26 +65,30 @@ public class GunScript : MonoBehaviour
     {
         thirdperson = cameraFollow.isThirdPerson;
 
+        position = currentGun.transform.position;
+
         if (isSmallGun == true && thirdperson == false)
         {
-            currentGun.transform.position = FP_smallGunTransform.transform.position;
+            position = FP_smallGunTransform.transform.position;
         }
         else if (isSmallGun == false && thirdperson == false)
         {
-            currentGun.transform.position = FP_largeGunTransform.transform.position;
+            position = FP_largeGunTransform.transform.position;
         }
         else if (isSmallGun == true && thirdperson == true)
         {
-            currentGun.transform.position = TP_smallGunTransform.transform.position;
+            position = TP_smallGunTransform.transform.position;
         }
         else if (isSmallGun == false && thirdperson == true)
         {
-            currentGun.transform.position = TP_largeGunTransform.transform.position;
+            position = TP_largeGunTransform.transform.position;
         }
+
+        currentGun.transform.position = position;
     }
+
     private void SwitchGun(int index)
     {
-        
         for (int i = 0; i < guns.Length; i++)
         {
             if (i == index)
