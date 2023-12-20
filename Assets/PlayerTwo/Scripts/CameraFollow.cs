@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 cameraPosition;
 
-    private bool isThirdPerson = false;
+    public bool isThirdPerson = false;
 
     private void Start()
     {

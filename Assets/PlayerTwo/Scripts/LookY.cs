@@ -14,7 +14,7 @@ public class LookY : MonoBehaviour
         yAxis = Input.GetAxis("Mouse Y");
 
         mouseY -= yAxis * rotationSpeed;
-        mouseY = Mathf.Clamp(mouseY, -30, 30);
+        mouseY = Mathf.Clamp(mouseY, -60, 60);
 
         transform.localEulerAngles = new Vector3(mouseY, 0f, 0f);
     }
