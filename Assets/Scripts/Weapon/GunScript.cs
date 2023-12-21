@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-    [Header("Guns")]
     [SerializeField] private GameObject[] guns;
     [SerializeField] private GameObject lookY;
 
-    [Header("First Person Positions")]
-    [SerializeField] private GameObject FP_smallGunTransform;
-    [SerializeField] private GameObject FP_largeGunTransform;
-
-    [Header("Third Person Positions")]
-    [SerializeField] private GameObject TP_smallGunTransform;
-    [SerializeField] private GameObject TP_largeGunTransform;
-
-    public CameraFollow cameraFollow;
     public bool thirdperson;
-
-    private GameObject currentGun;
-    private bool isSmallGun = true;
-
-    Vector3 position;
+    public GameObject currentGun;
+    public int currentGunIndex;
+    public bool isSmallGun = true;
 
     private void Start()
     {
@@ -31,7 +19,6 @@ public class GunScript : MonoBehaviour
 
     private void Update()
     {
-        GunPosition();
         SelectGun();
     }
 
@@ -61,40 +48,15 @@ public class GunScript : MonoBehaviour
         SwitchGun(i);
     }
 
-    private void GunPosition()
-    {
-        thirdperson = cameraFollow.isThirdPerson;
-
-        position = currentGun.transform.position;
-
-        if (isSmallGun == true && thirdperson == false)
-        {
-            position = FP_smallGunTransform.transform.position;
-        }
-        else if (isSmallGun == false && thirdperson == false)
-        {
-            position = FP_largeGunTransform.transform.position;
-        }
-        else if (isSmallGun == true && thirdperson == true)
-        {
-            position = TP_smallGunTransform.transform.position;
-        }
-        else if (isSmallGun == false && thirdperson == true)
-        {
-            position = TP_largeGunTransform.transform.position;
-        }
-
-        currentGun.transform.position = position;
-    }
-
     private void SwitchGun(int index)
     {
         for (int i = 0; i < guns.Length; i++)
         {
             if (i == index)
             {
-                guns[i].SetActive(true);
+                currentGunIndex = i;
                 currentGun = guns[i];
+                guns[i].SetActive(true);
             }
             else
             {

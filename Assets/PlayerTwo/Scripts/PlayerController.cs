@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
+    [Header("Speeds")]
     [SerializeField] private float jumpSpeed = 5.0f;
-    
+    [SerializeField] private float fastSpeed;
+    [SerializeField] private float normalSpeed;
+
+    private float movementSpeed;
     private CharacterController characterController;
 
     private float gravity = 9.81f;
@@ -32,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
         if (characterController.isGrounded)
         {
-            direction = new Vector3(xAxis, 0f, yAxis);
+            direction = new Vector3(xAxis, 0f, yAxis).normalized;
 
             velocity = direction * movementSpeed;
             velocity = transform.transform.TransformDirection(velocity);
@@ -56,11 +59,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            movementSpeed = 8.0f;
+            movementSpeed = fastSpeed;
         }
         else
         {
-            movementSpeed = 5.0f;
+            movementSpeed = normalSpeed;
         }
     }
 }
