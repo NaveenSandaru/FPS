@@ -7,7 +7,6 @@ public class GunScript : MonoBehaviour
     [SerializeField] private GameObject[] guns;
     [SerializeField] private GameObject lookY;
 
-    public bool thirdperson;
     public GameObject currentGun;
     public int currentGunIndex;
     public bool isSmallGun = true;
@@ -26,16 +25,31 @@ public class GunScript : MonoBehaviour
     {
         if (Input.GetKeyDown("1"))
         {
+            if (currentGunIndex == 0) // Ignore retake the same gun
+            {
+                return;
+            }
+
             isSmallGun = true;
             StartCoroutine(SwitchTime(0));
         }
         if (Input.GetKeyDown("2"))
         {
+            if (currentGunIndex == 1)
+            {
+                return;
+            }
+
             isSmallGun = false;
             StartCoroutine(SwitchTime(1));
         }
         if (Input.GetKeyDown("3"))
         {
+            if (currentGunIndex == 2)
+            {
+                return;
+            }
+
             isSmallGun = false;
             StartCoroutine(SwitchTime(2));
         }
