@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
     Vector3 position;
 
+    public bool isRun; // For animation
+
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         yAxis = Input.GetAxis("Vertical");
 
         CheckForShift();
+        IsPlayerRunning();
 
         if (characterController.isGrounded)
         {
@@ -47,12 +50,25 @@ public class PlayerController : MonoBehaviour
 
             position = transform.position;
             position += velocity;
+
             transform.position = position;
         }
-        
+
         velocity.y -= gravity * Time.deltaTime; // Add gravity
-        
+
         characterController.Move(velocity * Time.deltaTime);
+    }
+
+    private void IsPlayerRunning()
+    {
+        if (yAxis != 0)
+        {
+            isRun = true;
+        }
+        else
+        {
+            isRun = false;
+        }
     }
 
     private void CheckForShift()
