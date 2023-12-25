@@ -8,7 +8,6 @@ public class AimScript : MonoBehaviour
     [SerializeField] private Vector3[] normalPosition;
     [SerializeField] private Vector3[] aimPosition;
     [SerializeField] private GunScript gunScript;
-    //[SerializeField] private float aimSpeed = 3.0f;
 
     private int index;
     private GameObject currentGun;
@@ -55,13 +54,11 @@ public class AimScript : MonoBehaviour
 
     private void NormalPosition(int i)
     {
-        //currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, aimPosition[i], aimSpeed * Time.deltaTime);
         currentGun.transform.localPosition = normalPosition[i];
     }
 
     private void AimPosition(int i)
     {
-        //currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, normalPosition[i], aimSpeed * Time.deltaTime);
         currentGun.transform.localPosition = aimPosition[i];
     }
 }

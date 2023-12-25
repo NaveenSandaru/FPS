@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Housed
   - LookY
+  - Enemy
   layers:
   - Default
   - TransparentFX

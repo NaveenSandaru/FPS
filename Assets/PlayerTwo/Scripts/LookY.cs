@@ -6,9 +6,15 @@ public class LookY : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 5.0f;
 
+    private Rigidbody Rbody;
     private float yAxis;
     private float mouseY;
-    
+
+    private void Start()
+    {
+        Rbody = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         yAxis = Input.GetAxis("Mouse Y");
