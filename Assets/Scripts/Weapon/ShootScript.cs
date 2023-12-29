@@ -98,9 +98,9 @@ public class ShootScript : MonoBehaviour
                     enemyHealth.TakeDamage(20);
                 }
             }
+            ReduceBullet();
             StartCoroutine(recoilTime(index));
             PlayShootSound();
-            StartCoroutine(ReduceBullet(index));
         }
     }
 
@@ -109,26 +109,29 @@ public class ShootScript : MonoBehaviour
         if (index == 0)
         {
             animator.Play("PistolRecoil");
+            canFire = false;
             yield return new WaitForSecondsRealtime(0.24f);
             animator.Play("Idle");
         }
         else if (index == 1)
         {
             animator.Play("RifalRecoil");
+
+            canFire = false;
             yield return new WaitForSecondsRealtime(0.2f);
             animator.Play("Idle");
         }
         else if (index == 2)
         {
             animator.Play("SniperRecoil");
+            canFire = false;
             yield return new WaitForSecondsRealtime(0.8f);
             animator.Play("Idle");
         }
     }
 
-    private IEnumerator ReduceBullet(int index)
+    private void ReduceBullet()
     {
-        yield return new WaitForSecondsRealtime(0.25f);
         currentAmmoAmount[index] -= 1;
     }
 

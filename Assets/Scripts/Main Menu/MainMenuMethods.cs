@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuMethods : MonoBehaviour
 {
+    [SerializeField] private Canvas main_menu_canvas;
+    [SerializeField] private Canvas settings_menu_canvas;
+    [SerializeField] private Canvas credit_canvas;
+
     void Start()
     {
         
@@ -20,11 +24,12 @@ public class MainMenuMethods : MonoBehaviour
     }
     public void settings()
     {
-        SceneManager.LoadScene(3);
+        //SceneManager.LoadScene(3);
+
     }
     public void credits()
     {
-        SceneManager.LoadScene(2);
+        //SceneManager.LoadScene(2);
     }
     public void quit()
     {
