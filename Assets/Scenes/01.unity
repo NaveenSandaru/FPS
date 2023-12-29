@@ -377,6 +377,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351630970}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!20 &669047726 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2795023794486548034, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+  m_PrefabInstance: {fileID: 1759583116688958508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +623,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892958446}
   m_CullTransparentMesh: 1
+--- !u!1 &950883100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4667800969126696519, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+  m_PrefabInstance: {fileID: 1759583116688958508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &957097486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3526483304420276496, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
@@ -734,6 +744,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197767190}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1368106239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7261719951529744995, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+  m_PrefabInstance: {fileID: 1759583116688958508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1412805046 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3137553852257048439, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
@@ -1079,10 +1094,26 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 173056017}
+    - target: {fileID: 165678684920664090, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1110025456781763483, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1528546088101110594, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+      propertyPath: FPP
+      value: 
+      objectReference: {fileID: 950883100}
+    - target: {fileID: 1528546088101110594, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+      propertyPath: TPP
+      value: 
+      objectReference: {fileID: 1368106239}
+    - target: {fileID: 1528546088101110594, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 669047726}
     - target: {fileID: 2798120081416105281, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5469573
@@ -1171,6 +1202,14 @@ PrefabInstance:
       propertyPath: holsters.Array.data[2]
       value: 
       objectReference: {fileID: 1000605021}
+    - target: {fileID: 4347864751347004514, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+      propertyPath: fastSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347864751347004514, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
+      propertyPath: normalSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5902922920006061899, guid: 9d9fe94f880c8ee48ac953135f514c4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
