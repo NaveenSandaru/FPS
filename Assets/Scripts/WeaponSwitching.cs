@@ -1,93 +1,106 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    [SerializeField] private GameObject handGun;
-    [SerializeField] private GameObject handGunHolster;
-    [SerializeField] private GameObject sniperRifle;
-    [SerializeField] private GameObject sniperRifleHolster;
-    [SerializeField] private GameObject assaultRifle;
-    [SerializeField] private GameObject assaultRifleHolster;
-    [SerializeField] private GameObject hand;
+    [SerializeField] private GameObject[] guns;
+    [SerializeField] private GameObject[] holsters;
+    [SerializeField] public GameObject hand;
+
+    private Vector3[] initialPositions;
+    private Quaternion[] initialRotations;
+
+    public int weaponNum;
+
     void Start()
     {
+        initialPositions = new Vector3[guns.Length];
+        initialRotations = new Quaternion[guns.Length];
 
+        for (int i = 0; i < guns.Length; i++)
+        {
+            initialPositions[i] = guns[i].transform.localPosition;
+            initialRotations[i] = guns[i].transform.localRotation;
+        }
     }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.Keypad1))
         {
+            weaponNum = 0;
             holsterAR();
             holsterSniper();
             drawPistol();
-            
         }
         if (Input.GetKey(KeyCode.Keypad2))
         {
+            weaponNum = 1;
             holsterPistol();
             holsterSniper();
             drawAR();
         }
         if (Input.GetKey(KeyCode.Keypad3))
         {
+            weaponNum = 2;
             holsterPistol();
             holsterAR();
             drawSniper();
         }
-        if (Input.GetKey(KeyCode.H)) {
+        if (Input.GetKey(KeyCode.H))
+        {
             holsterPistol();
             holsterAR();
             holsterSniper();
-            
         }
     }
+
     private void holsterPistol()
     {
-        if (handGun.transform.parent == hand.transform)
-        {
-            handGun.transform.SetParent(handGunHolster.transform);
-            handGun.transform.localPosition = Vector3.zero;
-            handGun.transform.localRotation = Quaternion.identity;
-        }
+        Holster(0);
     }
+
     private void holsterAR()
     {
-        if (assaultRifle.transform.parent == hand.transform)
-        {
-            assaultRifle.transform.SetParent(assaultRifleHolster.transform);
-            assaultRifle.transform.localPosition = Vector3.zero;
-            assaultRifle.transform.localRotation = Quaternion.identity;
-        }
+        Holster(1);
     }
+
     private void holsterSniper()
     {
-        if (sniperRifle.transform.parent == hand.transform)
-        {
-            sniperRifle.transform.SetParent(sniperRifleHolster.transform);
-            sniperRifle.transform.localPosition = Vector3.zero;
-            sniperRifle.transform.localRotation = Quaternion.identity;
-        }
+        Holster(2);
     }
+
     private void drawPistol()
     {
-        handGun.transform.SetParent(hand.transform);
-        handGun.transform.localPosition = Vector3.zero;
-        handGun.transform.localRotation = Quaternion.identity;
+        Draw(0);
     }
+
     private void drawAR()
     {
-        assaultRifle.transform.SetParent(hand.transform);
-        assaultRifle.transform.localPosition = Vector3.zero;
-        assaultRifle.transform.localRotation = Quaternion.identity;
+        Draw(1);
     }
+
     private void drawSniper()
     {
-        sniperRifle.transform.SetParent(hand.transform);
-        sniperRifle.transform.localPosition = Vector3.zero;
-        sniperRifle.transform.localRotation = Quaternion.identity;
+        Draw(2);
+    }
+
+    private void Holster(int index)
+    {
+        if (guns[index].transform.parent == hand.transform)
+        {
+            guns[index].transform.SetParent(holsters[index].transform);
+            guns[index].transform.localPosition = initialPositions[index];
+            guns[index].transform.localRotation = initialRotations[index];
+        }
+    }
+
+    private void Draw(int index)
+    {
+        guns[index].transform.SetParent(hand.transform);
+        if (index == 0) hand.transform.rotation = Quaternion.Euler(60f, 120f, 30f);
+        if (index == 1) hand.transform.rotation = Quaternion.Euler(0f, 5f, 120f);
+        if (index == 2) hand.transform.rotation = Quaternion.Euler(0, 0, 90f);
+        guns[index].transform.localPosition = initialPositions[index];
+        guns[index].transform.localRotation = initialRotations[index];
     }
 }
-

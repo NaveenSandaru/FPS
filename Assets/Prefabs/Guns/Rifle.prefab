@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512846155541372398}
   m_Layer: 0
-  m_Name: Rifal
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
